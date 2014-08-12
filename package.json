@@ -2,7 +2,7 @@
   "author": "Amine Mouafik <amine@mouafik.fr>",
   "name": "trianglecrm",
   "description": "SDK for storefronts to process sales and communicate with TriangleCRM.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -19,9 +19,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "lodash": "^2.4.1",
-    "request": "~2.37.0",
-    "xml2json": "^0.4.0"
+    "soap": "^0.5.0"
   },
   "devDependencies": {
     "should": "~4.0.4",
