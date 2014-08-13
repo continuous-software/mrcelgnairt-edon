@@ -10,19 +10,27 @@ SDK for storefronts to process sales and communicate with TriangleCRM.
 ## Usage ##
 
     var TriangleCRM = require('trianglecrm');
-    var clientExtended = new TriangleCRM({
+    var trianglecrm = new TriangleCRM({
       host: 'https://mydomain.trianglecrm.com',
       username: 'johndoe',
       password: 'p@$sw0ro|'
     }, function(error, clientSoap) {
-       console.log(clientSoap, clientExtended)
+      console.log(trianglecrm, clientSoap)
     });
 
-## Client Extended ##
+## API
 
-We use an extended client to make communication with TriangleCRM SOAP service easier: avoid adding username and password to each request, avoid typing _Specified parameters and more.
+* [**`trianglecrm()`**]()
+* [**`trianglecrm#CreateProspect()`**]()
+* [**`trianglecrm#CreateSubscription()`**]()
+* [**`trianglecrm#CreateNewSubscriptionExistingCustomer()`**]()
 
-### clientExtended.CreateProspect ###
+--------------------------------------------------------
+### trianglecrm#CreateProspect(parameters, callback)
+
+#### `options`
+
+#### Example
 
     clientExtended.CreateProspect({
       productTypeID: 1,
@@ -49,7 +57,11 @@ We use an extended client to make communication with TriangleCRM SOAP service ea
       console.log(error, result);
     });
 
-### clientExtended.CreateSubscription ###
+### trianglecrm#CreateSubscription(parameters, callback) ###
+
+#### `options`
+
+#### Example
 
     clientExtended.CreateSubscription({
       planID: 168,
@@ -82,15 +94,19 @@ We use an extended client to make communication with TriangleCRM SOAP service ea
       console.log(error, result);
     });
 
-### clientExtended.CreateNewSubscriptionExistingCustomer ###
+### trianglecrm#CreateNewSubscriptionExistingCustomer ###
 
-     clientExtended.CreateNewSubscriptionExistingCustomer({
-       prospectID: 12,
-       billingID: 276,
-       planID: 552,
-       trialPackageID: 1004,
-       chargeForTrial: true,
-       sendConfirmationEmail: true
-     }, function(error, result) {
-       console.log(error, result);
-     });
+#### `options`
+
+#### Example
+
+    clientExtended.CreateNewSubscriptionExistingCustomer({
+      prospectID: 12,
+      billingID: 276,
+      planID: 552,
+      trialPackageID: 1004,
+      chargeForTrial: true,
+      sendConfirmationEmail: true
+    }, function(error, result) {
+      console.log(error, result);
+    });
