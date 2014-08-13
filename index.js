@@ -21,7 +21,8 @@ function TriangleCRM(options, callback) {
   return {
     CreateProspect: this.CreateProspect.bind(this),
     CreateSubscription: this.CreateSubscription.bind(this),
-    CreateNewSubscriptionExistingCustomer: this.CreateNewSubscriptionExistingCustomer.bind(this)
+    CreateNewSubscriptionExistingCustomer: this.CreateNewSubscriptionExistingCustomer.bind(this),
+    GetSaleInfo: this.GetSaleInfo.bind(this)
   };
 }
 
@@ -67,4 +68,8 @@ TriangleCRM.prototype.CreateNewSubscriptionExistingCustomer = function(upsell, c
   upsell.prospectIDSpecified = (upsell.prospectID) ? 'TRUE' : 'FALSE';
   upsell.billingIDSpecified = (upsell.billingID) ? 'TRUE' : 'FALSE';
   this.processRequest('CreateNewSubscriptionExistingCustomer', upsell, callback);
+};
+
+TriangleCRM.prototype.GetSaleInfo = function(sale, callback) {
+  this.processRequest('GetSaleInfo', sale, callback);
 };
