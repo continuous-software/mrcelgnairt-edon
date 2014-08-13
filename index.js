@@ -48,7 +48,7 @@ TriangleCRM.prototype.processRequest = function(service, request, callback) {
     else if (result[service + 'Result'].State == 'Error')
       return callback && callback(result[service + 'Result'].ErrorMessage);
     else
-      return callback && callback(result[service + 'Result'].ReturnValue);
+      return callback && callback(null, result[service + 'Result'].ReturnValue);
   });
 };
 
