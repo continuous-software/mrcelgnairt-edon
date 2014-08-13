@@ -19,47 +19,52 @@ function TriangleCRM(options, callback) {
   this._password = options.password;
   this.initialize(callback);
   return {
-    CreateProspect: this.CreateProspect,
-    CreateSubscription: this.CreateSubscription,
-    CreateNewSubscriptionExistingCustomer: this.CreateNewSubscriptionExistingCustomer
+    CreateProspect: this.CreateProspect.bind(this),
+    CreateSubscription: this.CreateSubscription.bind(this),
+    CreateNewSubscriptionExistingCustomer: this.CreateNewSubscriptionExistingCustomer.bind(this)
   };
 }
 
 TriangleCRM.prototype.initialize = function(callback) {
   var _this = this;
   soap.createClient(_this._host + TriangleCRM.ENDPOINT, function(error, client) {
-    this.client = (!error) ? client : error;
-    callback(error, client);
+    _this.client = (!error) ? client : error;
+    callback && callback(error, client);
   });
 };
 
 TriangleCRM.prototype.signRequest = function(request) {
   return _.extend(request, {
-    username: this.username,
-    password: this.password
+    username: this._username,
+    password: this._password
+  });
+};
+
+TriangleCRM.prototype.processRequest = function(service, request, callback) {
+  this.client[service](this.signRequest(request), function(error, result) {
+    if (error)
+      return callback && callback(error);
+    else if (result[service + 'Result'].State == 'Error')
+      return callback && callback(result[service + 'Result'].ErrorMessage);
+    else
+      return callback && callback(result[service + 'Result'].ReturnValue);
   });
 };
 
 TriangleCRM.prototype.CreateProspect = function(prospect, callback) {
   prospect.productTypeIDSpecified = (prospect.productTypeId) ? 'TRUE' : 'FALSE';
-  this.client.CreateProspect(this.signRequest(prospect), function(error, result) {
-    console.log(error, result);
-  });
+  this.processRequest('CreateProspect', prospect, callback);
 };
 
 TriangleCRM.prototype.CreateSubscription = function(subscription, callback) {
   subscription.campaignIDSpecified = (subscription.campaignID) ? 'TRUE' : 'FALSE';
   subscription.prospectIDSpecified = (subscription.prospectID) ? 'TRUE' : 'FALSE';
   subscription.paymentTypeSpecified = (subscription.paymentType) ? 'TRUE' : 'FALSE';
-  this.client.CreateSubscription(this.signRequest(subscription), function(error, result) {
-    console.log(error, result);
-  });
+  this.processRequest('CreateSubscription', subscription, callback);
 };
 
 TriangleCRM.prototype.CreateNewSubscriptionExistingCustomer = function(upsell, callback) {
   upsell.prospectIDSpecified = (upsell.prospectID) ? 'TRUE' : 'FALSE';
   upsell.billingIDSpecified = (upsell.billingID) ? 'TRUE' : 'FALSE';
-  this.client.CreateNewSubscriptionExistingCustomer(this.signRequest(upsell), function(error, result) {
-    console.log(error, result);
-  });
+  this.processRequest('CreateNewSubscriptionExistingCustomer', upsell, callback);
 };
