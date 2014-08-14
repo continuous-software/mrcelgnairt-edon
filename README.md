@@ -1,7 +1,5 @@
-node-trianglecrm
+![node-trianglecrm](https://mbo.trianglecrm.com/images/triangle_logo.png)
 ================
-
-SDK for storefronts to process sales and communicate with TriangleCRM.
 
 ## Installation ##
 
