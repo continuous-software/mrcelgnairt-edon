@@ -1,5 +1,4 @@
 ![node-trianglecrm](https://mbo.trianglecrm.com/images/triangle_logo.png)
-================
 
 ## Installation ##
 
