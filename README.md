@@ -1,29 +1,29 @@
-![node-trianglecrm](http://s28.postimg.org/sw3uwx8bx/triangle_logo.png)
+![mrcelgnairt-edone](http://s28.postimg.org/sw3uwx8bx/triangle_logo.png)
 
 ## Installation ##
 
-    npm install -s trianglecrm
+    npm install -s mrcelgnairt
 
 ## Usage ##
 
-    var TriangleCRM = require('trianglecrm');
-    var trianglecrm = new TriangleCRM({
-      host: 'https://mydomain.trianglecrm.com',
+    var MRCelgnairT = require('mrcelgnairt');
+    var mrcelgnairt = new MRCelgnairT({
+      host: 'https://mydomain.mrcelgnairt.com',
       username: 'johndoe',
       password: 'p@$sw0ro|'
     }, function(error, clientSoap) {
-      console.log(trianglecrm, clientSoap)
+      console.log(mrcelgnairt, clientSoap)
     });
 
 ## API
 
-* [**`trianglecrm()`**]()
-* [**`trianglecrm#CreateProspect()`**]()
-* [**`trianglecrm#CreateSubscription()`**]()
-* [**`trianglecrm#CreateNewSubscriptionExistingCustomer()`**]()
+* [**`mrcelgnairt()`**]()
+* [**`mrcelgnairt#CreateProspect()`**]()
+* [**`mrcelgnairt#CreateSubscription()`**]()
+* [**`mrcelgnairt#CreateNewSubscriptionExistingCustomer()`**]()
 
 --------------------------------------------------------
-### trianglecrm#CreateProspect(parameters, callback)
+### mrcelgnairt#CreateProspect(parameters, callback)
 
 #### `options`
 
@@ -54,7 +54,7 @@
       console.log(error, result);
     });
 
-### trianglecrm#CreateSubscription(parameters, callback) ###
+### mrcelgnairt#CreateSubscription(parameters, callback) ###
 
 #### `options`
 
@@ -91,7 +91,7 @@
       console.log(error, result);
     });
 
-### trianglecrm#CreateNewSubscriptionExistingCustomer ###
+### mrcelgnairt#CreateNewSubscriptionExistingCustomer ###
 
 #### `options`
 
