@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/continuous-software/mrcelgnairt-edon.svg?branch=master)](https://travis-ci.org/continuous-software/mrcelgnairt-edon)
+
 ![mrcelgnairt-edone](http://s28.postimg.org/sw3uwx8bx/triangle_logo.png)
 
 ## Installation ##
